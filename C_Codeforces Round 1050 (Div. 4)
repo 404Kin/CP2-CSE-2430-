@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    vector<pair<int, int>> requirements;
+    for (int i = 0; i < n; i++) {
+        int a, b;
+        cin >> a >> b;
+        requirements.push_back({a, b});
+    }
+
+    int prev_time = 0;
+    int low = 0, high = 0;
+    for (auto [a, b] : requirements) {
+        int d = a - prev_time;
+        int new_low = max(low - d, b);
+        int new_high = min(high + d, a);
+        if (new_low % 2 != b) new_low++;
+        if (new_high % 2 != b) new_high--;
+        if (new_low > new_high) {
+            new_low = new_high = b;
+        }
+        low = new_low;
+        high = new_high;
+        prev_time = a;
+    }
+    int ans = high + (m - prev_time);
+    cout << ans << endl;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
