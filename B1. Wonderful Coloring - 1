@@ -1,0 +1,39 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll=long long;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin>>t;
+
+    while(t--){
+
+    string s;
+    cin>>s;
+
+    map<char,int>frq;
+    for(char c:s)frq[c]++;
+
+    int count1=0,count2=0;
+
+    for(auto p:frq){
+        if(p.second>=2)count2++;
+
+        else if(p.second==1)count1++;
+      }
+      cout<<count2+count1/2<<endl;
+
+    }
+    return 0;
+}
+
+
+
+
+
+
