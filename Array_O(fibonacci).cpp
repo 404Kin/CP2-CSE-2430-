@@ -18,7 +18,7 @@ int main() {
         cout<<1<<endl;
         return 0;
     }
-    int a=0,b=1,c;
+    long long a=0,b=1,c;
     for(int i=3;i<=n;i++){
         c=a+b;
         a=b;
@@ -27,6 +27,7 @@ int main() {
     cout<<b<<endl;
     return 0;
 }
+
 
 
 
