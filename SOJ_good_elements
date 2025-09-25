@@ -1,0 +1,60 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+using ll=long long;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin>>t;
+    for(int i=1;i<=t;i++){
+
+    int n;
+    cin>>n;
+    vector<int>razty(n);
+
+    int max_val=0;
+
+    for(int i=0;i<n;i++){
+        cin>>razty[i];
+
+        if(razty[i]>max_val)max_val=razty[i];
+    }
+
+    vector<int>frq(max_val+1,0);
+
+    for(int i=0;i<n;i++){
+        frq[razty[i]]++;
+    }
+
+    int goodcount=0;
+
+    for(int i:razty){
+        if (i == 1) {
+        if (frq[1] > 1) {
+            goodcount++;
+        }
+        continue;
+        }
+        if(frq[i]>1){
+            goodcount++;
+            continue;
+        }
+
+        long long power=1LL*i*i;
+        while(power<=max_val){
+            if(frq[power]>0){
+                goodcount++;
+                break;
+            }
+            power*=i;
+        }
+    }
+
+    cout<<"Case "<<i<<": "<<goodcount<<endl;
+
+    }
+    return 0;
+}
