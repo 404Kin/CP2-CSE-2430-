@@ -1,0 +1,45 @@
+
+
+#include <bits/stdc++.h>
+using namespace std;
+using ll=long long;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string s;
+    cin>>s;
+    int q;
+    cin>>q;
+
+    int n=s.size();
+    vector<int>presum(n);
+
+    presum[0]=(s[0]=='a'? 1:0);
+
+    for(int i=1;i<n;i++){
+        presum[i]=presum[i-1]+(s[i]=='a'? 1:0);
+    }
+
+    while(q--){
+        int l,r;
+        cin>>l>>r;
+
+        l--;
+        r--;
+
+        int ans=presum[r]-(l>0 ? presum[l-1]:0);
+
+        cout<<ans<<endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
