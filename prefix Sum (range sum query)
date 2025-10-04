@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n,q;
+    cin>>n>>q;
+    vector<long long>arr(n),pfx(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+
+    pfx[0]=arr[0];
+    for(int i=1;i<n;i++){
+        pfx[i]=pfx[i-1]+arr[i];
+    }
+
+    while(q--){
+        int l,r;
+        cin>>l>>r;
+
+        l--;
+        r--;
+        long long sum=pfx[r];
+
+        if(l>0) sum-=pfx[l-1];
+
+        cout<<sum<<endl;
+    }
+
+    return 0;
+}
+ 
